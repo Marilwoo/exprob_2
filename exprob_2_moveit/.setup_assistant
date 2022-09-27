@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: erl2
+    relative_path: urdf/robot.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/robot_xacro.srdf
+  CONFIG:
+    author_name: Maria Luisa Aiachini
+    author_email: 4375373@studenti.unige.it
+    generated_timestamp: 1661760538

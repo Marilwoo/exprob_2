@@ -1,0 +1,5 @@
+cartesian_limits:
+  max_trans_vel: 2
+  max_trans_acc: 3.00
+  max_trans_dec: -6
+  max_rot_vel: 2.57
