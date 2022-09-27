@@ -29,14 +29,13 @@ For this project are needed three packages:
 #### UML and packages description
 #### Temporal diagram
 #### ROS msgs
-- In package [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2)
-	- ErlOracle.msg
+- ErlOracle.msg
 	```
 	int32 ID
 	string key
 	string value
 	```
-	- hints.msg
+- hints.msg
 	```
 	string[] hint_0
 	string[] hint_1
@@ -46,24 +45,39 @@ For this project are needed three packages:
 	string[] hint_5
 	```
 #### ROS srv
-- In package [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2)
-	- Check_srv.srv
+- Check_srv.srv
 	```
 	string ID_srv
 	---
 	bool check
 	```
-	- Oracle.srv
+- Oracle.srv
 	```
 	---
 	int32 ID
 	```
 
 ### Installation and how to run
+For this project to work are needed:
+- The three packages 
+	- [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2)
+	- [my_rosplan_interface](https://github.com/Marilwoo/exprob_2/tree/master/my_rosplan_interface)
+	- [exprob_2_moveit](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit)
+These packages need to be cloned in your ros_ws ROS workspace
 
-### Working description, screenshots 
+- ROSplan
 
-### Documentation
+To build the code run:
+	```
+	catkin_make -DCATKIN_WHITELIST_PACKAGES=""
+	```
+To run the code in a terminal run:
+	```
+	roslaunch erl2 mylaunch.launch
+	```
+
+
+### Working description, screenshots
 
 ### System features
 
