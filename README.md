@@ -14,8 +14,17 @@ For this project are needed three packages:
 	- Simulation file that manages the position and the sending of the hints
 	- Urdf and xacro files for the robot
 	- Pddl files for domain and problem
-- [my_rosplan_interface](https://github.com/Marilwoo/exprob_2/tree/master/my_rosplan_interface)
+	- [Documentation](https://github.com/Marilwoo/exprob_2/tree/master/erl2/docs/html)
+- [my_rosplan_interface](https://github.com/Marilwoo/exprob_2/tree/master/my_rosplan_interface) This node the action files for the ROSplan:
+	- Move from home
+	- Move between waypoints
+	- Move towards home
+	- Take hints
+	- Check hints
+	- [Documentation](https://github.com/Marilwoo/exprob_2/tree/master/my_rosplan_interface/docs/html)
 - [exprob_2_moveit](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit)
+	- Configuration files for moveit
+	- Launch files for moveit
 
 #### Temporal diagram
 #### UML and packages description
