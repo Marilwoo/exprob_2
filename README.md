@@ -74,14 +74,14 @@ These packages need to be cloned in your ros_ws ROS workspace
 
 To build the code run:
 
-	```
+	---
 	catkin_make -DCATKIN_WHITELIST_PACKAGES=""
-	```
+	---
 To run the code in a terminal run:
 
-	```
+	---
 	roslaunch erl2 mylaunch.launch
-	```
+	---
 
 
 ### Working description, screenshots
