@@ -27,6 +27,8 @@ For this project are needed three packages:
 	- Launch files for moveit
 	
 #### UML and packages description
+#### RQT_graph
+![rqt_graph](images/rosgraph.png)
 #### Temporal diagram
 #### ROS msgs
 - ErlOracle.msg
@@ -63,6 +65,7 @@ For this project to work are needed:
 	- [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2)
 	- [my_rosplan_interface](https://github.com/Marilwoo/exprob_2/tree/master/my_rosplan_interface)
 	- [exprob_2_moveit](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit)
+	
 These packages need to be cloned in your ros_ws ROS workspace
 
 - ROSplan
