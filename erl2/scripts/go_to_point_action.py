@@ -1,5 +1,30 @@
 #! /usr/bin/env python
-# import ros stuff
+
+## @package erl2
+#
+# \file go_to_point_action.py
+# \brief This node is used to manage the robot's movement
+#
+# \author Maria Luisa Aiachini
+# \version 1.0
+# \date 27/09/2022
+# 
+# \details
+#
+#  Publisher: <BR>
+#	/cmd_vel
+#
+#  Subscriber: <BR>
+#	/odom
+#
+#  Action Server: <BR>
+#	/reaching_goal
+#
+#  Description: <BR>
+#	This node manages the robot's movement. It takes the desired position on the /reaching_goal action server
+#	It is built as a state machine.
+#
+
 import rospy
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist, Point, Pose
@@ -36,9 +61,13 @@ pub = None
 act_s = None
 
 success = False
-# callbacks
 
-
+##
+#  \param msg
+#
+#	Callback function for the /odom topic. It takes the position, and orientation
+#	of the robot
+#
 def clbk_odom(msg):
     global position_
     global pose_
@@ -57,19 +86,31 @@ def clbk_odom(msg):
     euler = transformations.euler_from_quaternion(quaternion)
     yaw_ = euler[2]
 
-
+##
+#	\param state
+#
+#	Function that manages the change of state of the state machine
+#
 def change_state(state):
     global state_
     state_ = state
     print ('State changed to [%s]' % state_)
 
-
+##
+#	\param angle
+#
+#	Fucntion for the normalisation of the ange
+#
 def normalize_angle(angle):
     if(math.fabs(angle) > math.pi):
         angle = angle - (2 * math.pi * angle) / (math.fabs(angle))
     return angle
 
-
+##
+#	\param des_pos
+#
+#	Function for fixin the yaw of the robot, based on the desired position to reach
+#
 def fix_yaw(des_pos):
     global yaw_, pub, yaw_precision_2_, state_
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
@@ -91,7 +132,12 @@ def fix_yaw(des_pos):
         print ('Yaw error: [%s]' % err_yaw)
         change_state(1)
 
-
+##
+#	\param des_pos
+#
+#	Function to make the robot move straightvelosity depends on the distance between the
+#	desired position and the actual position of the robot
+#
 def go_straight_ahead(des_pos):
     global yaw_, pub, yaw_precision_, state_
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
@@ -117,6 +163,12 @@ def go_straight_ahead(des_pos):
         print ('Yaw error: [%s]' % err_yaw)
         change_state(0)
 
+##
+#	\param des_yaw
+#
+#	Function for fixin the yaw of the robor once it has reached
+#	the right x and y coordinates 
+#
 def fix_final_yaw(des_yaw):
     global yaw_, pub, yaw_precision_2_, state_
     #print("FIXING FINAL YAW")
@@ -142,6 +194,11 @@ def fix_final_yaw(des_yaw):
         print ('Yaw correct: [%s]' % err_yaw)
         change_state(3)
 
+##
+#
+#	Function for setting the state to "done". It assigns 0 to linear and angular velocities
+#	to make the robot stop.
+#
 def done():
     global success
     print ('DONE')
@@ -152,7 +209,11 @@ def done():
     success = True
     act_s.set_succeeded()
 
-
+##
+#	\param goal
+#
+#	Function for managing the state machine.
+#
 def planning(goal):
 
     global state_, desired_position_, des_yaw, success
@@ -162,7 +223,6 @@ def planning(goal):
     desired_position_.y = goal.target_pose.pose.position.y
     des_yaw = goal.target_pose.pose.orientation.w
     
-    #state_ = 0
     change_state(0)
     rate = rospy.Rate(20)
     success = True
@@ -201,11 +261,11 @@ def planning(goal):
             rospy.logerr('Unknown state!')
 
         rate.sleep()
-    #if success:
-     #   rospy.loginfo('Goal: Succeeded!')
-      #  act_s.set_succeeded(result)
 
-
+##
+#	Main function of the go_to_point node.
+#	It contains the initialization of the publisher, subscriber and the action server.
+#
 def main():
     global pub, active_, act_s
     rospy.init_node('go_to_point')

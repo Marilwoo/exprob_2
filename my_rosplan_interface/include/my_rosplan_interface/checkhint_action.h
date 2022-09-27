@@ -18,10 +18,11 @@ class CheckHintInterface: public RPActionInterface
 			CheckHintInterface(ros::NodeHandle &nh);
 			/* listen to and process action_dispatch topic */
 			bool concreteCallback(const rosplan_dispatch_msgs::ActionDispatch::ConstPtr& msg);
-			//void check_dimension();
+			/* function for checking if the hypothesis is consistent (who, what, where) */
 			void check_consistent();
-			//void hint_check_callback(const erl2::check_msg::ConstPtr& msg);
+			/* callback fot /hint_list topic, takes the hypotheses list */
 			void hint_callback(const erl2::hints::ConstPtr& msg);
+			/* function for checking if the complete and consistent hypothesis is the winning one */
 			void check_winning(std::string ID);
 	};
 }

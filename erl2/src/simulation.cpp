@@ -1,3 +1,21 @@
+/**
+* \file simulation.cpp
+* \brief Node that manages the oracle. It manages the winning hypothesis, the position of the
+*	hints and what hint is sent to the robot every time.
+* \author Maria Luisa Aiachini
+*
+* Publishes to: <BR>
+*	°/visualization_marker
+*	°/oracle_hint
+*
+* Subscribe to: <BR>
+*	°/gazebo/link_state
+*
+* Server:<BR>
+*  	°/oracle_solution
+*
+*/
+
 #include <ros/ros.h>
 #include <gazebo_msgs/LinkStates.h>
 #include <visualization_msgs/MarkerArray.h>
