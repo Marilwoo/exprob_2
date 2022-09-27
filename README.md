@@ -25,11 +25,39 @@ For this project are needed three packages:
 - [exprob_2_moveit](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit)
 	- Configuration files for moveit
 	- Launch files for moveit
-
-#### Temporal diagram
+	
 #### UML and packages description
+#### Temporal diagram
 #### ROS msgs
+- In package [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2)
+	- ErlOracle.msg
+	```
+	int32 ID
+	string key
+	string value
+	```
+	- hints.msg
+	```
+	string[] hint_0
+	string[] hint_1
+	string[] hint_2
+	string[] hint_3
+	string[] hint_4
+	string[] hint_5
+	```
 #### ROS srv
+- In package [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2)
+	- Check_srv.srv
+	```
+	string ID_srv
+	---
+	bool check
+	```
+	- Oracle.srv
+	```
+	---
+	int32 ID
+	```
 
 ### Installation and how to run
 
