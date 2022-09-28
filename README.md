@@ -3,7 +3,7 @@ Maria Luisa Aiachini - 4375373
 
 ### General introduction
 This project simulates a simple version of cluedo. The robot is inside a room enclosed by four walls; the robot needs to go around the room, searching for some hints and then, when it has a complete and consistent hypothesis it needs to check if it is the winning one; if it is the winning one the simulation stops, if not, the robot goes back to find new hints.
-The hints the robot has to take are placed in defined positions: (3,0)(-3,0)(0,3)(0,-3), but the height of the hint is randomly chosen, at the start of the simulation, between two positions: 0.75 and 1.25; this means that the robot should be able to move the arm to these two positions to be able to take the hints.
+The hints the robot has to take, are placed in defined positions: (3,0)(-3,0)(0,3)(0,-3), but the height of the hint is randomly chosen, at the start of the simulation, between two positions: 0.75 and 1.25; this means that the robot is able to move the arm to these two positions to take the hints.
 
 ### Software architecture
 For this project are needed three packages:
