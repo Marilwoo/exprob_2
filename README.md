@@ -31,7 +31,7 @@ For this project are needed three packages:
 #### RQT_graph
 ![rqt_graph](images/rosgraph.png)
 #### Temporal diagram
-![Temporal diagram](images/Temporal.png)
+![Temporal diagram](images/Temporal_diagram.png)
 #### ROS msgs
 - ErlOracle.msg
 	```
