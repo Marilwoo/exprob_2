@@ -68,7 +68,6 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
    FILES
    Oracle.srv
-   Check_srv.srv
 #   Service2.srv
  )
 
