@@ -76,13 +76,13 @@ For this project are needed three packages:
 
 ### Installation and how to run
 For this project to work are needed:
+- [ROSPlan](https://github.com/KCL-Planning/ROSPlan)
+
 - The three packages that need to be cloned in your ros_ws ROS workspace
 	- [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2)
 	- [my_rosplan_interface](https://github.com/Marilwoo/exprob_2/tree/master/my_rosplan_interface)
 	- [exprob_2_moveit](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit)
 	
-- [ROSPlan](https://github.com/KCL-Planning/ROSPlan)
-
 To build the code run:
 
 	catkin_make -DCATKIN_WHITELIST_PACKAGES=""
@@ -92,11 +92,34 @@ To run the code in a terminal run:
 	roslaunch erl2 mylaunch.launch
 	
 	
-### Working description, screenshots
+### Working description: screenshots of running program
 ![Ambient](images/Ambient.jpeg)
+
+Images of the working environment of the project. On the left the ambient visualized on Gazebo, it contains the walls of the room. On the right the ambient on Rviz, here you can see the green spheres: when the gripper of the arm reaches one of the spheres the robot receives a hint.
+
 ![Movement](images/Movement.jpeg)
+
+Images of the printed messages on the terminal about movement. The robot will print the current position and the one to be reached
+
 ![Hints](images/Hints.jpeg)
-![Movement](images/Movement.jpeg)
+
+Images of how the reception of the hint. In order, the messages printed when:
+- The robot moves the arm to reach the hint
+- The received hint is valid
+- The received hint is already present in the hypothesis; in this case it will not be added again
+- The hint presents an error in the value field; the hint will not be added to any hypotehsis
+- The hint presents an error in the key field; the hint will not be added top any hypothesis
+
+![Hypothesis](images/Hypothesis.jpeg)
+
+Images of how the hypothesis are managed. In order, the messages printed when:
+- The hypotheses list does not contain any complete and consistent hypothesis
+- The robot has found a complete and consistent hypotesis: it will then check if it is the winning one
+- The hypothesis is, at first, printed in natural language and then is found that it is not the winning one
+- The hypothesis is the winning one
+
+
+
 ### System features
 
 ### System limitations
