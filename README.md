@@ -7,9 +7,11 @@ The hints the robot has to take, are placed in defined positions: (3,0)(-3,0)(0,
 
 ### Expected behavior
 ![Temporal diagram](images/Temporal_diagram.png)
+
 The robot, once sthe simulation starts execute always the same order of actions:
 - Goes from home to the first waypoint
 - Tries to take the first hint at the waypoint trying both the possible height
+- Checks if the hint is valid (no errors in key or value) and if the hint is already present in the correspondent hypothesis
 - Goes to the frollowing waypoints
 - At avery waypoint tries both heights to take the hints
 - Goes back to home
@@ -19,7 +21,7 @@ The robot, once sthe simulation starts execute always the same order of actions:
 
 ### Software architecture
 ![UML](images/UML.png)
-![UML](images/UML.png)
+
 For this project are needed three packages:
 - [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2) This node contains:
 	- Main launch file for the project
@@ -42,21 +44,21 @@ For this project are needed three packages:
 		- Subscriber to `/oracle_hint` that is the topic on which the hints are received
 		- Publisher to `/hint_list` that publishes the complete list of hypothesis gathered
 	- [Check hint](https://github.com/Marilwoo/exprob_2/blob/master/my_rosplan_interface/src/checkhint_action.cpp): this node is used to check if the hypotheses received are complete (containing three hints) and consistent (one hint of every type: Person, Place, Weapon). It then checks if the hypothesis is the winning one. It contains:
-		- Subscriber to `hint_list` to retreive the gathered hypotheses
-		- Client to `oracle_solution` that respond with the winning ID
+		- Subscriber to `/hint_list` to retreive the gathered hypotheses
+		- Client to `/oracle_solution` that respond with the winning ID
 	- [Documentation](https://github.com/Marilwoo/exprob_2/tree/master/my_rosplan_interface/docs/html)
 - [exprob_2_moveit](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit)
 	- [Configuration files](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit/config) for moveit
 	- [Launch](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit/launch) files for moveit
 	
 #### ROS msgs
-- ErlOracle.msg
+- ErlOracle.msg: used by `/oracke_hint` topic. Sends the three parts of a hint.
 	```
 	int32 ID
 	string key
 	string value
 	```
-- hints.msg
+- hints.msg: used by `/hint_list` topic. Used to send the complete list of hypotheses associated to every ID.
 	```
 	string[] hint_0
 	string[] hint_1
@@ -66,13 +68,7 @@ For this project are needed three packages:
 	string[] hint_5
 	```
 #### ROS srv
-- Check_srv.srv
-	```
-	string ID_srv
-	---
-	bool check
-	```
-- Oracle.srv
+- Oracle.srv: used to retreive the winning ID, used by `/oracle_solution`
 	```
 	---
 	int32 ID
@@ -80,14 +76,12 @@ For this project are needed three packages:
 
 ### Installation and how to run
 For this project to work are needed:
-- The three packages 
+- The three packages that need to be cloned in your ros_ws ROS workspace
 	- [erl2](https://github.com/Marilwoo/exprob_2/tree/master/erl2)
 	- [my_rosplan_interface](https://github.com/Marilwoo/exprob_2/tree/master/my_rosplan_interface)
 	- [exprob_2_moveit](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit)
 	
-These packages need to be cloned in your ros_ws ROS workspace
-
-- ROSplan
+- [ROSPlan](https://github.com/KCL-Planning/ROSPlan)
 
 To build the code run:
 
@@ -99,7 +93,10 @@ To run the code in a terminal run:
 	
 	
 ### Working description, screenshots
-
+![Ambient](images/Ambient.png)
+![Movement](images/Movement.png)
+![Hints](images/Hints.png)
+![Movement](images/Movement.png)
 ### System features
 
 ### System limitations
