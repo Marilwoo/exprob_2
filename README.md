@@ -52,13 +52,13 @@ For this project are needed three packages:
 	- [Launch](https://github.com/Marilwoo/exprob_2/tree/master/exprob_2_moveit/launch) files for moveit
 	
 #### ROS msgs
-- ErlOracle.msg: used by `/oracke_hint` topic. Sends the three parts of a hint.
+- **ErlOracle.msg** : used by `/oracke_hint` topic. Sends the three parts of a hint.
 	```
 	int32 ID
 	string key
 	string value
 	```
-- hints.msg: used by `/hint_list` topic. Used to send the complete list of hypotheses associated to every ID.
+- **hints.msg** : used by `/hint_list` topic. Used to send the complete list of hypotheses associated to every ID.
 	```
 	string[] hint_0
 	string[] hint_1
@@ -68,7 +68,7 @@ For this project are needed three packages:
 	string[] hint_5
 	```
 #### ROS srv
-- Oracle.srv: used to retreive the winning ID, used by `/oracle_solution`
+- **Oracle.srv**  : used to retreive the winning ID, used by `/oracle_solution`
 	```
 	---
 	int32 ID
@@ -93,10 +93,10 @@ To run the code in a terminal run:
 	
 	
 ### Working description, screenshots
-![Ambient](images/Ambient.png)
-![Movement](images/Movement.png)
-![Hints](images/Hints.png)
-![Movement](images/Movement.png)
+![Ambient](images/Ambient.jpeg)
+![Movement](images/Movement.jpeg)
+![Hints](images/Hints.jpeg)
+![Movement](images/Movement.jpeg)
 ### System features
 
 ### System limitations
