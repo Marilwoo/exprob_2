@@ -116,10 +116,14 @@ Images of how the hypothesis are managed. In order, the messages printed when:
 ![Hypothesis](images/Hypothesis.jpeg)
 
 ### System features
+The main difference between this version of the project and the previous one is the use of ROSplan. This makes the robot capable of managing autonomously the movement and all the action to perform. It also makes possible that if the goal is not reached it will automatically update the state of the robot and replan in order to try again until the goal is reached.
+Another big difference is the absence of Armor and the ontology.
 
 ### System limitations
+Probably the biggest limitation of the program is the fact that the robot is forced to go around all the waypoints before going to the center to check if there is a complete and consistent one.
 
 ### Possible improvements
+To improve the biggest limitation the solution would be to find a way to check at every hint if there is a complete and consistent hypotheses and comunicate it to ROSPlan in order to make the robot move directly towards the center to check if it is the winning one without visiting all the other waypoints.
 
 ### Contacts
 Maria Luisa Aiachini - 4375373
